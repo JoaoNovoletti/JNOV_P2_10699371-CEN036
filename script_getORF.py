@@ -36,8 +36,7 @@ for gene in codons:
   codons[gene]["frame5"] = re.findall(r"(.{3})",seqs[gene][-2::-1])
   codons[gene]["frame6"] = re.findall(r"(.{3})",seqs[gene][-3::-1])
 
-#Montando um dicionário com as traduções dos códons
-
+#Achando os maiores ORFS de cada gene comparando todos os frames, imprimindo em ORF.fna e armazenando os dados para uso posterior
 dadoscodonpepmaior = {}
 
 with open ("ORF.fna", "w") as Tlongest:
@@ -80,6 +79,8 @@ with open ("ORF.fna", "w") as Tlongest:
       dadoscodonpepmaior[gene][sequencia].append(inicioorf)
       dadoscodonpepmaior[gene][sequencia].append(fimorf)
 
+
+#Montando um dicionário com as traduções dos códons
 translation_table = {
     'GCT':'A', 'GCC':'A', 'GCA':'A', 'GCG':'A',
     'CGT':'R', 'CGC':'R', 'CGA':'R', 'CGG':'R', 'AGA':'R', 'AGG':'R',
